@@ -1,0 +1,53 @@
+<hr>
+<h1>Less 3</h1>
+
+<div class="container">
+  <form class="mt-3 mb-5" novalidate #formTodo="ngForm" (ngSubmit)="addTodo(formTodo)">
+    <div
+      class="alert alert-danger"
+      *ngIf="todoTitle.errors?.required && todoTitle.touched"
+    >
+    Please enter title
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="addError"
+    >
+    Task error sened
+    </div>
+    <div
+      class="alert alert-success"
+      *ngIf="addSuccess"
+    >
+    Task added
+    </div>
+    <div class="form-group">
+      <label>title</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="todo.title"
+        name="title"
+        #todoTitle="ngModel"
+        required
+      >
+    </div>
+    <button [disabled]="formTodo.invalid" class="btn btn-primary">Add todo</button>
+  </form>
+  <div class="todo-list mb-5">
+    <div class="card mb-3"
+         *ngFor="let todo of todos"
+         [ngClass]="{
+         'bg-info': !todo.completed,
+         'bg-warning': todo.completed
+         }"
+    >
+      <div class="card-body">
+        <p class="card-text text-white">{{ todo.id }}: {{ todo.title }}</p>
+        <button class="btn btn-danger">Delet</button>
+        <button class="btn btn-success">Edit</button>
+        <button class="btn btn-primary" (click)=" todo.completed = !todo.completed; editTodo(todo)">{{ todo.completed ? 'Undone' : 'Done'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
