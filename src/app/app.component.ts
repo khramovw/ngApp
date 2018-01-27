@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  // newMessage: string;
+  //
+  // onNewMessage(message){
+  //   this.newMessage = message;
+  //   console.log(message);
+  // }
 }

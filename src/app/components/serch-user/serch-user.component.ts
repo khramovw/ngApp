@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable} from 'rxjs/Observable';
 
 /*import service*/
@@ -14,8 +14,11 @@ export class SerchUserComponent implements OnInit {
   user: Observable<any>;
   nickname: string;
   searchingUser: boolean = false;
-  newMessage: string;
-  data: any;
+  // newMessage: string;
+  showContinionBtn: boolean;
+  // data: any;
+
+  @Output() newAppMessage: EventEmitter<any> = new EventEmitter();
 
   constructor( public gitHubService: GithubDataService ) { }
 
@@ -25,6 +28,7 @@ export class SerchUserComponent implements OnInit {
     //   console.log(user);
     // });
 
+    /*имитация событий*/
     // this.data = new Observable( observe => {
     //
     //   setTimeout( () => {
@@ -50,8 +54,20 @@ export class SerchUserComponent implements OnInit {
     this.gitHubService.searchUser(this.nickname).subscribe( user => {
       this.user = user;
       this.searchingUser = false;
-      this.newMessage = 'We found user';
+      this.showContinionBtn = true;
+      // this.newMessage = 'We found user';
+      this.newAppMessage.emit({
+        message: `We found user : ${user.login}`,
+        error: false
+      });
+      formGit.resetForm();
       console.log(user);
+    }, error => {
+      this.searchingUser = false;
+      this.newAppMessage.emit({
+        message: `We not found user `,
+        error: true
+      });
     });
   }
 }

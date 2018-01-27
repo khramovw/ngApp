@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
+import { AppRoutingModule } from './app-routing.module';
+
 // import componennt
 import { AppComponent } from './app.component';
 import { SendboxComponent } from "./components/sendbox/sendbox.component";
@@ -17,6 +19,9 @@ import { SerchUserComponent} from "./components/serch-user/serch-user.component"
 import { TodoDataService } from './services/todo-data.service';
 import { GithubDataService } from "./services/github-data.service";
 import { AlertComponent } from './components/alert/alert.component';
+import { InfoComponent } from './components/info/info.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -28,12 +33,15 @@ import { AlertComponent } from './components/alert/alert.component';
     FormValidSupplementalComponent,
     TodoComponent,
     SerchUserComponent,
-    AlertComponent
+    AlertComponent,
+    InfoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [TodoDataService, GithubDataService],
   bootstrap: [AppComponent]
