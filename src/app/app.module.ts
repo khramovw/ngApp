@@ -11,9 +11,12 @@ import { EventComponent } from './components/event/event.component';
 import { FormEventComponent } from './components/form-event/form-event.component';
 import { FormValidSupplementalComponent } from './components/form-valid-supplemental/form-valid-supplemental.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { SerchUserComponent} from "./components/serch-user/serch-user.component";
 
 // import service
 import { TodoDataService } from './services/todo-data.service';
+import { GithubDataService } from "./services/github-data.service";
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,16 @@ import { TodoDataService } from './services/todo-data.service';
     EventComponent,
     FormEventComponent,
     FormValidSupplementalComponent,
-    TodoComponent
+    TodoComponent,
+    SerchUserComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [TodoDataService],
+  providers: [TodoDataService, GithubDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

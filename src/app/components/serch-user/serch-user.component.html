@@ -1,0 +1,20 @@
+<div class="container d-flex mt-t">
+  <div class="card card-body m-auto col-6">
+    <app-alert *ngIf="newMessage" [newMessage]="newMessage"></app-alert>
+    <form novalidate #form="ngForm" #formGit="ngForm" (ngSubmit)="onSearch(formGit)">
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Enter nickname"
+          [(ngModel)]="nickname"
+          name="nickname"
+          #nickName="ngModel"
+          required
+        >
+      </div>
+      <button class="btn btn-primary btn-block">Search</button>
+      <p class="mt-2 mb-2 text-center" *ngIf="searchingUser">Please wait</p>
+    </form>
+  </div>
+</div>
