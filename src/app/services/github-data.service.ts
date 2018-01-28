@@ -11,3 +11,4 @@ export class GithubDataService {
     return this.http.get<Observable<any>>(`https://api.github.com/users/${userName}`)
   }
 }
+

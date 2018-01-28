@@ -14,8 +14,8 @@ export class TodoComponent implements OnInit {
     complites: false,
     title: ''
   };
-  addSuccess:boolean = false;
-  addError:boolean = false;
+  addSuccess: boolean = false;
+  addError: boolean = false;
 
   constructor(
     public  todoService: TodoDataService
@@ -32,7 +32,7 @@ export class TodoComponent implements OnInit {
     });
   }
 
-  addTodo( formTodo ){
+  addTodo( formTodo ) {
     this.todoService.addTodo(this.todo).subscribe(todo => {
       this.todos.unshift(todo);
       this.addSuccess = true;
@@ -48,13 +48,13 @@ export class TodoComponent implements OnInit {
         this.addError = false;
       }, 2000);
       console.log(error);
-    })
+    });
   }
-  editTodo( todo ){
-    this.todoService.editTodo(todo).subscribe( todo => {
+  editTodo( todo ) {
+    this.todoService.editTodo(todo).subscribe(todo => {
       console.log(todo);
     }, error => {
       console.log(error);
-    })
+    });
   }
 }
