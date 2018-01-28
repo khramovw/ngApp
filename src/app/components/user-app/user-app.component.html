@@ -1,0 +1,48 @@
+<div class="container">
+  <form class="text-center" novalidate #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="form-group col-8 ml-auto mr-auto mt-5 mb-5">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="name"
+        [(ngModel)]="userAppName"
+        name="userAppName"
+        #nameVal="ngModel"
+        required
+        minlength="3"
+      >
+      <input
+        type="text"
+        class="form-control"
+        placeholder="email"
+        [(ngModel)]="userAppEmail"
+        name="userAppEmail"
+        #nameVal="ngModel"
+        required
+        minlength="3"
+      >
+    </div>
+    <button class="btn btn-primary">Add User</button>
+  </form>
+  <div class="user-list col">
+    <div class="card mt-5 text-white bg-dark " *ngFor="let user of users; let i = index">
+      <div class="card-header">
+        {{ user.name }}
+      </div>
+      <img *ngIf="photos" class="card-img-top" [src]=" photos[i].url " alt="Card image cap">
+      <!--<div class="card-body">-->
+        <!--<h5 class="card-title">{{ user.company.name }}</h5>-->
+        <!--<p class="card-text">{{ user.company.catchPhrase}}</p>-->
+      <!--</div>-->
+      <ul class="list-group list-group-flush">
+        <!--<li class="list-group-item"><span>Tell:</span> {{ user.phone }}</li>-->
+        <li class="list-group-item"><span>Email:</span> {{ user.email }}</li>
+        <!--<li class="list-group-item"><span>City:</span> {{ user.address.city }}</li>-->
+      </ul>
+      <div class="card-body">
+        <button class="btn btn-primary">Edit</button>
+        <button (click)="removeUser(i)" class="btn btn-danger">Delit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+.card-header, .list-group-item span{
+  font-weight: 700;
+}
+.list-group-item {
+  color: darkblue;
+  justify-content: space-between;
+  display: flex;
+}
+.list-group-item span{
+  color: gray;
+}
+.user-list{
+  display: inline-flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card{
+  width: 30%;
+  /*background-color: lightgrey;*/
+}
+.card-body{
+  justify-content: space-between;
+  display: flex;
+}
+.card-body .btn{
+  width: 35%;
+}
+.form-group{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+.form-group input{
+  width: 40%;
+}
