@@ -5,31 +5,41 @@
         type="text"
         class="form-control"
         placeholder="name"
-        [(ngModel)]="userAppName"
+        [(ngModel)]="user.name"
         name="userAppName"
         #nameVal="ngModel"
         required
         minlength="3"
       >
+
       <input
         type="text"
         class="form-control"
         placeholder="email"
-        [(ngModel)]="userAppEmail"
+        [(ngModel)]="user.email"
         name="userAppEmail"
         #emailVal="ngModel"
         required
         minlength="3"
       >
     </div>
+    <div class="alert alert-danger"
+         *ngIf="nameVal.errors?.minlength && nameVal.touched"
+    >min length 3</div>
+    <div class="alert alert-danger"
+         *ngIf="nameVal.errors?.required && nameVal.touched && nameVal.invalid"
+    >Name must be not empty</div>
+    <div class="alert alert-danger"
+         *ngIf="userDel"
+    >User deleted</div>
     <button class="btn btn-primary">Add User</button>
   </form>
   <div class="user-list col">
     <div class="card mt-5 text-white bg-dark " *ngFor="let user of users; let i = index">
       <div class="card-header">
-        {{ user.name }}
+        {{ user.id }}: {{ user.name }}
       </div>
-      <img *ngIf="photos" class="card-img-top" [src]="  photos[i].thumbnailUrl " alt="Card image cap">
+      <img *ngIf="photos" class="card-img-top" [src]=" photos[user.id].thumbnailUrl " alt="Card image cap">
       <!--<div class="card-body">-->
         <!--<h5 class="card-title">{{ user.company.name }}</h5>-->
         <!--<p class="card-text">{{ user.company.catchPhrase}}</p>-->
@@ -41,7 +51,7 @@
       </ul>
       <div class="card-body">
         <button class="btn btn-primary">Edit</button>
-        <button (click)="removeUser(i)" class="btn btn-danger">Delit</button>
+        <button (click)="removeUser(i)" class="btn btn-danger">Delet</button>
       </div>
     </div>
   </div>
