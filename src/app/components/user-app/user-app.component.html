@@ -21,6 +21,7 @@
         #emailVal="ngModel"
         required
         minlength="3"
+        email
       >
     </div>
     <div class="alert alert-danger"
@@ -32,6 +33,12 @@
     <div class="alert alert-danger"
          *ngIf="userDel"
     >User deleted</div>
+    <div class="alert alert-success"
+         *ngIf="addUserAlert"
+    >User added</div>
+    <div class="alert alert-danger mt-1"
+         *ngIf="!emailVal.errors?.required && emailVal.invalid "
+    >Email exampel: exampel@mail.com</div>
     <button class="btn btn-primary">Add User</button>
   </form>
   <div class="user-list col">

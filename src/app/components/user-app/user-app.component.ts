@@ -18,6 +18,8 @@ export class UserAppComponent implements OnInit {
   userAppEmail: string;
   id: number;
   userDel: boolean = false;
+  addUserAlert: boolean = false;
+  x: string;
   imgUrl: 'http://lorempixel.com/400/200';
 
   constructor( public userService: UserDataService ) { }
@@ -47,6 +49,12 @@ export class UserAppComponent implements OnInit {
           id: this.user.id
         }
        );
+
+      this.addUserAlert = true;
+      setTimeout( () => {
+        this.addUserAlert = false;
+      }, 3000);
+
       console.log(user, this.users);
     }, error => {
       console.log(error);
@@ -57,6 +65,10 @@ export class UserAppComponent implements OnInit {
     console.log(i);
     this.users.splice(i, 1);
     this.userDel = true;
+
+    setTimeout( () => {
+      this.userDel = false;
+      }, 3000);
 
     console.log(this.users[i]);
   }
