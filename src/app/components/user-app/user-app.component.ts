@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService} from "../../services/user-data.service";
+import { UserDataService} from '../../services/user-data.service';
 
 
 @Component({
@@ -8,16 +8,22 @@ import { UserDataService} from "../../services/user-data.service";
   styleUrls: ['./user-app.component.css']
 })
 export class UserAppComponent implements OnInit {
-  users: any[];
+  users: any;
+  user: any = {
+    name: '',
+    email: ''
+  };
   photos: any;
   userAppName: string;
+  userAppEmail: string;
+  imgUrl: 'http://lorempixel.com/400/200';
 
-  constructor( public userService : UserDataService ) { }
+  constructor( public userService: UserDataService ) { }
 
   ngOnInit() {
     this.userService.getUser().subscribe( users => {
       this.users = users;
-      console.log(users[0].name);
+      console.log(users);
     }, error => {
       console.error(error);
     });
@@ -30,14 +36,23 @@ export class UserAppComponent implements OnInit {
     });
   }
 
-  onSubmit(form){
-    this.users.unshift(this.userAppName);
-    console.log(form);
+  addUser(form) {
+    this.userService.adUser(this.user).subscribe(user => {
+      this.users.unshift(
+        {
+          name: this.userAppName,
+          email: this.userAppEmail
+        }
+       );
+      console.log(user);
+    }, error => {
+      console.log(error);
+    });
   }
 
-  removeUser(i){
+  removeUser(i) {
     console.log(i);
-    this.users.splice(i,1);
+    this.users.splice(i, 1);
     console.log(this.users[i]);
   }
 

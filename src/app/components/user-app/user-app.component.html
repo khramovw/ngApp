@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="text-center" novalidate #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <form class="text-center" novalidate #form="ngForm" (ngSubmit)="addUser(form)">
     <div class="form-group col-8 ml-auto mr-auto mt-5 mb-5">
       <input
         type="text"
@@ -17,7 +17,7 @@
         placeholder="email"
         [(ngModel)]="userAppEmail"
         name="userAppEmail"
-        #nameVal="ngModel"
+        #emailVal="ngModel"
         required
         minlength="3"
       >
@@ -29,7 +29,7 @@
       <div class="card-header">
         {{ user.name }}
       </div>
-      <img *ngIf="photos" class="card-img-top" [src]=" photos[i].url " alt="Card image cap">
+      <img *ngIf="photos" class="card-img-top" [src]="  photos[i].thumbnailUrl " alt="Card image cap">
       <!--<div class="card-body">-->
         <!--<h5 class="card-title">{{ user.company.name }}</h5>-->
         <!--<p class="card-text">{{ user.company.catchPhrase}}</p>-->
