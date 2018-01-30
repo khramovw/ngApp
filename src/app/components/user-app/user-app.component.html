@@ -39,7 +39,7 @@
     <div class="alert alert-danger mt-1"
          *ngIf="!emailVal.errors?.required && emailVal.invalid "
     >Email exampel: exampel@mail.com</div>
-    <button class="btn btn-primary">Add User</button>
+    <button [disabled]="form.invalid" class="btn btn-primary">Add User</button>
   </form>
   <div class="user-list col">
     <div class="card mt-5 text-white bg-dark " *ngFor="let user of users; let i = index">

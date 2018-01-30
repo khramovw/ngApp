@@ -14,13 +14,9 @@ export class UserAppComponent implements OnInit {
     id: 0
   };
   photos: any;
-  userAppName: string;
-  userAppEmail: string;
   id: number;
   userDel: boolean = false;
   addUserAlert: boolean = false;
-  x: string;
-  imgUrl: 'http://lorempixel.com/400/200';
 
   constructor( public userService: UserDataService ) { }
 
